@@ -1,0 +1,271 @@
+{
+	"info": {
+		"_postman_id": "d251ea08-b20d-4823-88c8-45632aeaec2b",
+		"name": "OSOSS TEST",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "18751094"
+	},
+	"item": [
+		{
+			"name": "Products",
+			"item": [
+				{
+					"name": "All Products",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/products",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"products"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "country and currency filters",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{host}}/products?country_code=US&currency_code=USD",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"products"
+									],
+									"query": [
+										{
+											"key": "country_code",
+											"value": "US"
+										},
+										{
+											"key": "currency_code",
+											"value": "USD"
+										}
+									]
+								}
+							},
+							"_postman_previewlanguage": null,
+							"header": null,
+							"cookie": [],
+							"body": null
+						},
+						{
+							"name": "All Products",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{host}}/products?date=2025-12-25&order=highest-to-lowest",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"products"
+									],
+									"query": [
+										{
+											"key": "date",
+											"value": "2025-12-25"
+										},
+										{
+											"key": "order",
+											"value": "highest-to-lowest"
+										}
+									]
+								}
+							},
+							"_postman_previewlanguage": null,
+							"header": null,
+							"cookie": [],
+							"body": null
+						},
+						{
+							"name": "All parameters",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{host}}/products?country_code=DE&currency_code=EUR&date=2024-06-15&order=lowest-to-highest",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"products"
+									],
+									"query": [
+										{
+											"key": "country_code",
+											"value": "DE"
+										},
+										{
+											"key": "currency_code",
+											"value": "EUR"
+										},
+										{
+											"key": "date",
+											"value": "2024-06-15"
+										},
+										{
+											"key": "order",
+											"value": "lowest-to-highest"
+										}
+									]
+								}
+							},
+							"_postman_previewlanguage": null,
+							"header": null,
+							"cookie": [],
+							"body": null
+						}
+					]
+				},
+				{
+					"name": "Single Product",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/products/1",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"products",
+								"1"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "country/currency/date",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{host}}/products/1",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"products",
+										"1"
+									]
+								}
+							},
+							"_postman_previewlanguage": null,
+							"header": null,
+							"cookie": [],
+							"body": null
+						},
+						{
+							"name": "date filter",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{host}}/products/1?date=2024-12-01",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"products",
+										"1"
+									],
+									"query": [
+										{
+											"key": "date",
+											"value": "2024-12-01"
+										}
+									]
+								}
+							},
+							"_postman_previewlanguage": null,
+							"header": null,
+							"cookie": [],
+							"body": null
+						}
+					]
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "host\n",
+			"value": "http://task.test/api",
+			"type": "string"
+		},
+		{
+			"key": "host",
+			"value": "",
+			"type": "default"
+		}
+	]
+}
