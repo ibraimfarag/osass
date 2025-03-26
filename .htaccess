@@ -1,0 +1,18 @@
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+
+    # Redirect to the public folder
+    RewriteRule ^(.*)$ public/$1 [L]
+</IfModule>
+
+# Block direct access to sensitive files
+<FilesMatch "(\.env|\.htaccess|\.git|\.gitignore|composer\.json|composer\.lock|package\.json|package-lock\.json|yarn\.lock|artisan|server\.php|webpack\.mix\.js|phpunit\.xml|node_modules)">
+    Order allow,deny
+    Deny from all
+</FilesMatch>
+
+# Block access to the storage and vendor directories
+RewriteRule ^(storage|vendor)($|/) - [F,L]
+
+# Prevent directory listing
+Options -Indexes
