@@ -1,7 +1,7 @@
 <IfModule mod_rewrite.c>
     RewriteEngine On
 
-    # Redirect to the public folder if it's not already
+    # Redirect to the public folder
     RewriteRule ^(.*)$ public/$1 [L]
 </IfModule>
 
@@ -16,7 +16,3 @@ RewriteRule ^(storage|vendor)($|/) - [F,L]
 
 # Prevent directory listing
 Options -Indexes
-
-# Remove 'public' from the URL and redirect to the correct URL structure
-RewriteCond %{REQUEST_URI} ^/v1/public/
-RewriteRule ^v1/public/(.*)$ /v1/$1 [R=301,L]
