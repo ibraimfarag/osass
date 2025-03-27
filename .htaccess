@@ -1,8 +1,8 @@
 <IfModule mod_rewrite.c>
     RewriteEngine On
 
-    RewriteCond %{REQUEST_URI} !^/v2/public/ [NC]
-    RewriteCond %{REQUEST_URI} ^/v2/api/ [NC]
+    RewriteCond %{REQUEST_URI} !^/v1/public/ [NC]
+    RewriteCond %{REQUEST_URI} ^/v1/api/ [NC]
     RewriteRule ^ - [L]
 
     RewriteRule ^(.*)$ public/$1 [L]
