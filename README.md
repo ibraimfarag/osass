@@ -87,7 +87,6 @@ curl "http://localhost:8000/api/products?country_code=US&currency_code=USD&date=
       "base_price": 199.99,
       "applicable_price": 179.99,
       "currency": "USD",
-      "converted_price": 179.99,
       "conversion_rate": 1.0
     }
   ]
