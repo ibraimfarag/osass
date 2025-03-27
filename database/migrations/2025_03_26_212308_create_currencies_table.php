@@ -15,6 +15,8 @@ return new class extends Migration
             $table->id();
             $table->string('code', 3)->unique();
             $table->string('name');
+            $table->decimal('exchange_rate', 10, 4)->default(1.0000);
+            $table->boolean('is_base')->default(false);
             $table->timestamps();
         });
     }

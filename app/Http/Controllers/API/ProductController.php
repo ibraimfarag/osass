@@ -49,18 +49,12 @@ class ProductController extends Controller
             ->orderBy('priority');
         }])->get();
 
-        $products->each(function ($product) {
-            $product->setAttribute('applicable_price',
-                $product->priceLists->isNotEmpty()
-                    ? $product->priceLists->first()->price
-                    : $product->base_price
-            );
-        });
+
 
         if ($order) {
             $sorted = $order === 'lowest-to-highest'
-                ? $products->sortBy('applicable_price')
-                : $products->sortByDesc('applicable_price');
+                ? $products->sortBy('base_price')
+                : $products->sortByDesc('base_price');
 
             $products = $sorted->values();
         }
@@ -107,11 +101,6 @@ class ProductController extends Controller
         }])->findOrFail($id);
 
 
-        $product->setAttribute('applicable_price',
-            $product->priceLists->isNotEmpty()
-                ? $product->priceLists->first()->price
-                : $product->base_price
-        );
 
 
         return (new ProductResource($product))
@@ -122,6 +111,37 @@ class ProductController extends Controller
                     'country' => $countryCode
                 ]
             ]);
+    }
+    public function store(Request $request)
+    {
+        $validated = $request->validate([
+            'name' => 'required|string|max:255',
+            'base_price' => 'required|numeric|min:0',
+            'description' => 'nullable|string'
+        ]);
+
+        $product = Product::create($validated);
+
+        return new ProductResource($product);
+    }
+
+    public function update(Request $request, Product $product)
+    {
+        $validated = $request->validate([
+            'name' => 'sometimes|string|max:255',
+            'base_price' => 'sometimes|numeric|min:0',
+            'description' => 'nullable|string'
+        ]);
+
+        $product->update($validated);
+
+        return new ProductResource($product);
+    }
+
+    public function destroy(Product $product)
+    {
+        $product->delete();
+        return response()->json(null, 204);
     }
 
 }

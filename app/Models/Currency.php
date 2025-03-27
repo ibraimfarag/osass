@@ -9,5 +9,8 @@ class Currency extends Model
 {
     use HasFactory;
     protected $fillable = ['code', 'name'];
+    protected $casts = [
+        'exchange_rate' => 'decimal:4',
+    ];
 
 }

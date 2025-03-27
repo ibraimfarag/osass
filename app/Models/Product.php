@@ -10,12 +10,11 @@ class Product extends Model
     use HasFactory;
     protected $fillable = ['name', 'base_price', 'description'];
 
+
     public function priceLists()
     {
         return $this->hasMany(PriceList::class);
     }
-
-    protected $appends = ['applicable_price'];
 
 
     public function getApplicablePriceAttribute()
@@ -29,9 +28,6 @@ class Product extends Model
             : $this->base_price;
     }
 
-    public function setApplicablePriceAttribute($value)
-    {
-        
-        $this->attributes['applicable_price'] = $value;
-    }
+
+
 }
